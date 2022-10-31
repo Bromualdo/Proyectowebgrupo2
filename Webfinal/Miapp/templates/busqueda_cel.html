@@ -1,0 +1,24 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block Contenido_cambiante %}
+    <center>
+<div class="card" style="width: 18rem;">
+    <div class="card-header" style="background-color: rgba(244, 244, 136, 0.957);">
+    <h4>Resultado de busqueda</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><h5>Modelo: {{modelo}}</h5> </li>
+      <li class="list-group-item"><h5>Marca: {{celulares.marca_celular}}</h5></li>
+      <li class="list-group-item"><h5>Hay en stock: {{celulares.stock_celular}} unidades</h5></li>
+    </ul>
+  </div>
+    
+    
+   
+            
+    </center>
+    <a class="btn btn-secondary btn-lg px-4 me-sm-3" style="margin: 10px;" href="{% url 'Inicio'%}">Volver al inicio</a>
+
+{% endblock %}
