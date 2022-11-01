@@ -3,6 +3,8 @@
 {% load static %}
 
 {% block Contenido_cambiante %}
+
+<h1 class="display-5 fw-bolder text mb-2">Hardware</h1>
 <h2 class="h4 fw-bolder">Ingrese nuevo Hardware:</h2>
 <form action = "{% url 'Hardware'%}" method ="POST"> {% csrf_token %}
        

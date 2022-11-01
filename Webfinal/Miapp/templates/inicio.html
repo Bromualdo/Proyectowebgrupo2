@@ -34,75 +34,30 @@
                             <h1 class="display-5 fw-bolder text-white mb-2">Aplicación de control de stock</h1>
                             <p class="lead text-white-50 mb-4">Una forma de agregar productos y conocer su existencia</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Insertar</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#tomessages">Consultar</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Celulares'%}">Celulares</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Hardware'%}">Hardware</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Insumos'%}">Insumos</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Software'%}">Software</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Features section-->
-        <section class="py-5 border-bottom" id="features">
-            <div class="container px-5 my-5">
-                <div class="row gx-5" style=height:700px>
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-phone-vibrate"></i></div>
-                        <h2 class="h4 fw-bolder">Celulares</h2>
-                        <p>¿Qué es un celular y para que nos sirve?
-                            Los “smartphones” se han desarrollado a un punto tal que casi han sustituido las computadoras tradicionales. Un teléfono inteligente permite hacer llamadas, enviar mensajes de texto, revisar el correo, chatear, navegar en internet, tomar fotos, hacer vídeos y descargar aplicaciones que simplifican la vida</p>
-                        <a class="text-decoration-none" href="{%url 'Celulares'%}">
-                            Insertar Celulares
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                        <h2 class="h4 fw-bolder">Hardware</h2>
-                        <p>El hardware son aquellos elementos físicos o materiales que constituyen una computadora o un sistema informático. Es decir, son aquellas partes físicas de un sistema operativo tales como sus componentes eléctricos, electrónicos, electromecánicos, mecánicos y cualquier elemento físico que esté involucrado.</p>
-                        <a class="text-decoration-none" href="{%url 'Hardware'%}">
-                            Insertar Hardware
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-bag-check"></i></div>
-                        <h2 class="h4 fw-bolder">Insumos</h2>
-                        <p> Los insumos informáticos son los consumibles utilizados para sacar mejor provecho de estos bienes tales como: Toner´s, cartuchos de cinta, hojas para impresión aires comprimidos y espumas para limpieza de equipos, estopas, brochas, alcohol isopropílico, etc.</p>
-                        <a class="text-decoration-none" href="{%url 'Insumos'%}">
-                            Insertar Insumos
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-4">   
-                    </div><div class="col-lg-4">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-terminal"></i></div>
-                        <h2 class="h4 fw-bolder">Software</h2>
-                        <p>Se conoce como software, ​ logicial o soporte lógico al sistema formal de un sistema informático, que comprende el conjunto de los componentes lógicos necesarios que hace posible la realización de tareas específicas</p>
-                        <a class="text-decoration-none" href="{%url 'Software'%}">
-                            Insertar Software
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>        
-        <!-- Contact section-->
+        
+        <!--seccion de busqueda  -->
         <section class="bg-light py-5" id="tomessages">
             <div class="container px-5 my-5 px-5">
                 <div class="text-center mb-5">
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-exclamation-square-fill"></i></div>
-                    <h2 class="fw-bolder">Desea realizar una busqueda?</h2>
+                    <h2 class="fw-bolder">Búsqueda rápida</h2>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                      Cuadro de busqueda
-                    </div>
-                    <div class="card-body">
-                      
+                                            
                       <form action="{% url 'buscar' %}" method="GET">{% csrf_token %}
                         
-                        <h2 class="card-text h4 fw-bolder" style="margin:10px">Ingrese el modelo de celular: <div class="input-group">
+                        <h2 class="card-text h4 fw-bolder" style="margin:10px">Ingrese el  modelo de celular a buscar: <div class="input-group">
                             <div class="input-group-prepend">
                               
                             </div>

@@ -3,6 +3,10 @@
 {% load static %}
 
 {% block Contenido_cambiante %}
+        
+                <h1 class="display-5 fw-bolder text mb-2">Celulares</h1>
+                
+        
         <h2 class="h4 fw-bolder">Ingrese nuevo celular:</h2>
         <form action = "{% url 'Celulares'%}" method ="POST"> {% csrf_token %}
        

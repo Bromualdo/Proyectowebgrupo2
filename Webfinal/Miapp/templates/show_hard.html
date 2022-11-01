@@ -5,7 +5,11 @@
 {% block Contenido_cambiante %}
 
 
-<h1 class="display-5 fw-bolder text-black mb-2"> Se agrego con exito </h1>
+<h1 class="display-5 fw-bolder text-black mb-2"> Se agregó con éxito </h1>
+<div class="card-header" style="background-color: rgba(244, 244, 136, 0.957);">
+  <h4>Existencias actuales de hardware</h4>
+</div>
+
 
 
        
@@ -39,6 +43,7 @@
 
 
 
-<a class="btn btn-secondary btn-lg px-4 me-sm-3" href="{% url 'Inicio'%}">Volver al inicio</a>
+
+<a class="btn btn-secondary btn-lg px-4 me-sm-3" href="{% url 'Hardware'%}">Agregar otro</a>
 
 {% endblock %}
