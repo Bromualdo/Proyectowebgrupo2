@@ -94,7 +94,6 @@ def buscar_modelo_cel(request):
         if request.GET['modelo_cel']:
             modelo_buscado=request.GET['modelo_cel']
             celulares=Celulares.objects.filter(modelo_celular__icontains=modelo_buscado)
-            
         
             return render(request,"busqueda_cel.html",{"celulares":celulares,"modelo":modelo_buscado,})
         else:

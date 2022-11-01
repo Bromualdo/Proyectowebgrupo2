@@ -1,1 +1,8 @@
-# ProyectoEntrega
+# AppControlStock_Pozzi_Prinsich_Barderi
+
+El proyecto es una aplicación de stock que habilita al usuario a cargar y consultar las existencias de un negocio informático. 
+Para ello se crearon 4 modelos (clases) que representan las categorías que pueden ser -precisamente- cargadas y consultadas en la base de datos creada a tal efecto.
+Ante un request del cliente tenemos 4 vistas básicas (celulares, software, hardware, insumos) que renderizan los respectivos html.
+Estos templates heredan de un html padre extraido de Bootstrap, que mantiene un contenido estático a fin de amenizar la experiencia y otorgarle sentido de identidad a los diversos componentes de la página. Cada template de django agrega un contenido especifico que se añade al estático que permanece invariable. La página de inicio no se heredó por una decisión meramente estética.
+Como resultado, cada template de django ofrece -asimismo- un formulario creado también con django por herencia de forms.Form. De esta manera,  se logra renderizar un nuevo template por cada formulario creado por el usuario, con las variables definidas en los modelos, al que -además- se le pasa como contexto un diccionario. El resultado es la creación de una lista con los productos ingresados y la cantidad existente (logrado con un bucle for). Se agregaron además dos vinculos de html en cada formulario para el caso de que el usuario desee continuar agregando objetos, o si decide ir al inicio de la página.
+Finalmente se creó un acceso rápido para la búsqueda por modelo de celular a través del método GET, que recupera los datos ingresados en la request a traves del value que indicamos (modelo de celular). Esos modelos de celulares los recuperamos a traves del manager, para lo cual antes invocamos el modelo respectivo (clase Celulares). La función de búsqueda renderiza una nueva html con los valores encontrados o un mensaje de datos equivocados si la búsqueda no produjo resultados.
