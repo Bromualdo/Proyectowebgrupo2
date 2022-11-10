@@ -1,6 +1,6 @@
 from django.urls import path
 from .models import Hardware, Software, Insumos, Celulares
-from .views import agregado, celulares, hardware, inicio,insumos, show_celulares,software,buscar_modelo_cel,show_hard,show_insumos,show_soft,nuevin
+from .views import agregado, celulares, hardware, inicio,insumos, show_celulares,software,buscar_modelo_cel,show_hard,show_insumos,show_soft,nuevin, registro_usuario
 
 
 urlpatterns = [
@@ -15,5 +15,6 @@ urlpatterns = [
     path('show_hard/',show_hard,name="show_hard"),
     path('show_insumos/',show_insumos,name="show_insumos"),
     path('show_soft/',show_soft,name="show_soft"),
-    path('nuevin/',nuevin)
+    path('nuevin/',nuevin),
+    path ("formulario_registro_usuario/", registro_usuario, name ="Registro")
 ]

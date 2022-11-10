@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.template import Context, Template
 from Miapp.forms import Formulario_Insumos, Formulario_celulares, Formulario_hardware, Formulario_software
 from .models import Celulares, Insumos,Hardware,Software
+from .forms import UserRegisterForm
 
 # Create your views here.
 
@@ -116,6 +117,29 @@ def show_soft(request):
 def show_hard(request):
     lista = Hardware.objects.all()    
     return render(request, "show_hard.html",{"Hardware": lista} )
+    
+
+def registro_usuario(request):
+
+    if request.method == 'POST':
+    
+        formulario_registro_usuario = UserRegisterForm(request.POST)
+    
+        if formulario_registro_usuario.is_valid():
+	
+            nombre_usuario= formulario_registro_usuario.cleaned_data["username"] 
+            
+            formulario_registro_usuario.save()
+	        
+            return render(request, "inicio2.html", {"mensaje": f'El usuario {nombre_usuario} ha sido creado con éxito'})
+	    
+        else:
+	    
+            return render(request, "inicio2.html", {"mensaje": f'Error al crear usuario'})
+    else:
+        formulario_registro_usuario = UserRegisterForm()
+	    
+        return render(request, "formulario_registro_usuario.html", {"formulario_registro": formulario_registro_usuario})
     
 
 
