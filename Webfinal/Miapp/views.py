@@ -11,13 +11,15 @@ from .models import Celulares, Insumos,Hardware,Software
 def inicio (request):
     return render(request,"inicio.html")
 
+def nuevin(request):
+    return render(request,'nuevin.html')
 
 def celulares (request):
     if request.method == "POST":
         mi_formulario = Formulario_celulares (request.POST)
         if mi_formulario.is_valid():
             data= mi_formulario.cleaned_data
-            formulario = Celulares (marca_celular=data ['marca'], modelo_celular= data ['modelo'], stock_celular= data ['stock'])
+            formulario = Celulares (marca=data ['marca'], modelo= data ['modelo'], stock= data ['stock'])
             formulario.save()
             return redirect ("show_cel")
     else:
@@ -30,7 +32,7 @@ def hardware (request):
         mi_formulario = Formulario_hardware (request.POST)
         if mi_formulario.is_valid():
             data= mi_formulario.cleaned_data
-            formulario = Hardware (tipo_hardware=data ['tipo'], marca_hardware = data ['marca'], stock_hardware= data ['stock'])
+            formulario = Hardware (tipo=data ['tipo'], marca = data ['marca'], stock= data ['stock'])
             formulario.save()
             return redirect ("show_hard")
     else:
@@ -42,7 +44,7 @@ def software (request):
         mi_formulario = Formulario_software (request.POST)
         if mi_formulario.is_valid():
             data= mi_formulario.cleaned_data
-            formulario = Software (tipo_software=data ['tipo'], marca_software= data ['marca'], stock_software= data ['stock'])
+            formulario = Software (tipo=data ['tipo'], marca= data ['marca'], stock= data ['stock'])
             formulario.save()
             return redirect ("show_soft")
     else:
@@ -55,7 +57,7 @@ def insumos (request):
         mi_formulario = Formulario_Insumos (request.POST)
         if mi_formulario.is_valid():
             data= mi_formulario.cleaned_data
-            formulario = Insumos (tipo_insumo=data ['tipo'], marca_insumo= data ['marca'], stock_insumo= data ['stock'])
+            formulario = Insumos (tipo=data ['tipo'], marca= data ['marca'], stock= data ['stock'])
             formulario.save()
             return redirect ("show_insumos")
     else:
@@ -71,7 +73,7 @@ def formulario_insumo (request):
         mi_formulario = Formulario_Insumos (request.POST)
         if mi_formulario.is_valid():
             data= mi_formulario.cleaned_data
-            formulario = Insumos (tipo_insumo=data ['tipo'], marca_insumo= data ['marca'], stock_insumo= data ['stock'])
+            formulario = Insumos (tipo=data ['tipo'], marca= data ['marca'], stock= data ['stock'])
             formulario.save()
             return redirect ("agregado")
     else:
@@ -83,7 +85,7 @@ def formulario_software (request):
         mi_formulario = Formulario_software (request.POST)
         if mi_formulario.is_valid():
             data= mi_formulario.cleaned_data
-            formulario = Software (tipo_software=data ['tipo'], marca_software= data ['marca'], stock_software= data ['stock'])
+            formulario = Software (tipo=data ['tipo'], marca= data ['marca'], stock= data ['stock'])
             formulario.save()
             return redirect ("agregado")
     else:
@@ -91,14 +93,15 @@ def formulario_software (request):
     return render (request, "formulario_software.html", {'mi_formulario': mi_formulario})
 
 def buscar_modelo_cel(request):
-        if request.GET['modelo_cel']:
-            modelo_buscado=request.GET['modelo_cel']
-            celulares=Celulares.objects.filter(modelo_celular__icontains=modelo_buscado)
+        if request.GET['busqueda']:
+            modelo_buscado=request.GET['busqueda']
+            celulares=Celulares.objects.filter(modelo__icontains=modelo_buscado)
         
             return render(request,"busqueda_cel.html",{"celulares":celulares,"modelo":modelo_buscado,})
         else:
             respuesta="usted ha ingresado datos en blanco, intente de nuevo"
         return render(request,'busqueda_cel.html',{"respuesta":respuesta})
+   
    
    
 def show_celulares(request):

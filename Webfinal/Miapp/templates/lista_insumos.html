@@ -3,14 +3,14 @@
 {% load static %}
 
 {% block Contenido_cambiante %}
-
+<span class="border border-warning">
 <h1 class="display-5 fw-bolder text mb-2">Insumos</h1>
 <h2 class="h4 fw-bolder">Ingrese nuevo Insumo:</h2>
-<form action = "{% url 'Insumos'%}" method ="POST"> {% csrf_token %}
+<form action = "{% url 'Insumos'%}"  class="h5 fw-normal"  method ="POST" > {% csrf_token %}
        
     {{ mi_formulario.as_p }}
 
-    <input type="submit" value = "Agregar"/>
+    <input type="submit" class="btn btn-warning "  value = "Agregar"/>
 </form>
-
+</span>
 {% endblock Contenido_cambiante %}
