@@ -1,0 +1,25 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block Contenido_cambiante %}
+
+<span class="border border-warning">
+        
+    <h1 class="display-5 fw-bolder text mb-2">Registro de usuario</h1>
+         
+
+<form action="{% url 'Registro' %}" method="POST">{% csrf_token %}
+
+    {{formulario_registro.as_p}}
+
+    <input type="submit" value="Registrar"/>
+
+</form>
+</span>
+
+
+       
+                 
+{% endblock Contenido_cambiante %}
+ 
