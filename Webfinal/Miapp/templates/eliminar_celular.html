@@ -1,0 +1,20 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block Contenido_cambiante %}
+    <ul>
+        {% for celu in celulares  %}
+            
+            <li>celu
+            </li>    
+         <div>
+            <form action = "{% url 'eliminar_cel' celu.id %}"  class="h5 fw-normal"  method ="POST" > {% csrf_token %}
+                    
+            <input type="submit" class="btn btn-warning "  value = "Eliminar"/>
+            </form>
+            </div>
+        {% endfor %} 
+    </ul>   
+       
+{% endblock Contenido_cambiante %}

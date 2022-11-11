@@ -1,11 +1,7 @@
 from http.client import HTTPResponse
-from this import d
-from urllib.request import Request
 from django.shortcuts import render, redirect
-from django.template import Context, Template
-from Miapp.forms import Formulario_Insumos, Formulario_celulares, Formulario_hardware, Formulario_software
 from .models import Celulares, Insumos,Hardware,Software
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm,Formulario_Insumos, Formulario_celulares, Formulario_hardware, Formulario_software
 
 # Create your views here.
 
@@ -117,6 +113,14 @@ def show_soft(request):
 def show_hard(request):
     lista = Hardware.objects.all()    
     return render(request, "show_hard.html",{"Hardware": lista} )
+
+def show_cel_del(request):
+    lista=Celulares.objects.all()
+    return render(request,"show_cel_del.html",{"Celulares":lista})
+
+def show_cel_edit(request):
+    lista=Celulares.objects.all()
+    return render(request,"show_cel_edit.html",{"Celulares":lista})
     
 
 def registro_usuario(request):
@@ -141,6 +145,38 @@ def registro_usuario(request):
 	    
         return render(request, "formulario_registro_usuario.html", {"formulario_registro": formulario_registro_usuario})
     
+def eliminar_celular(request,id):
+    
+    if request.method == "POST":
+        
+        celulares= Celulares.objects.get(id=id)
+        celulares.delete()        
+        # celulares=Celulares.objects.all()
+        
+        return render(request, "show_cel_del_exito.html", {'celulares': celulares})    
+
+def editar_celular(request,id):
+    
+    celulares=Celulares.objects.get(id=id)
+    if request.method == "POST":
+        mi_formulario = Formulario_celulares (request.POST)
+        if mi_formulario.is_valid():
+            data= mi_formulario.cleaned_data
+            
+            celulares.marca=data["marca"]
+            celulares.modelo=data["modelo"]
+            celulares.stock=data["stock"]            
+            celulares.save()
+            return redirect("show_cel_edit")
+    else:
+            mi_formulario = Formulario_celulares(initial={
+                "marca": celulares.marca,
+                "modelo": celulares.modelo,
+                "stock": celulares.stock
+            })
+    return render (request, "show_cel_edit_menu.html", {'mi_formulario': mi_formulario,"id":celulares.id})    
+
+ 
 
 
 
