@@ -1,0 +1,47 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block Contenido_cambiante %}
+
+<h1 class="display-5 fw-bolder text-black mb-2"> Modificacion de Celular</h1>
+<div class="card-header" style="background-color: rgba(244, 244, 136, 0.957);">
+  <h4>Existencias actuales de celulares</h4>
+</div>
+
+
+
+
+       
+    <table class="table table-sm">
+        
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Accion 1</th>
+            <th scope="col">Accion 2</th>
+
+          </tr>
+        </thead>
+        {% for celus in Celulares %}
+        <tbody>
+          <tr>
+            <th scope="row">{{celus.id}}</th>
+            <td>{{celus.marca}}</td>
+            <td>{{celus.modelo}}</td>
+            <td>{{celus.stock}}</td>
+            <td><div><form action="{% url 'eliminar_cel' celus.id %}" method="POST">{% csrf_token %}
+                <button class="btn btn-outline-dark">Eliminar</button>
+            </form></div></td>
+            <td><div><a href="{% url 'editar_cel' celus.id %}">{% csrf_token %}
+                <button class="btn btn-outline-dark">Editar</button>
+            </a></div></td>
+          </tr>
+        
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}
