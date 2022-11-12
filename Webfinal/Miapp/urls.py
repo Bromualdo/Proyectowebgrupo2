@@ -17,7 +17,7 @@ urlpatterns = [
     path('show_soft/',show_soft,name="show_soft"),
     path('nuevin/',nuevin),
     path('formulario_registro_usuario/', registro_usuario, name ="Registro"),
-     path ("login_usuario/", login_usuario, name ="Login"),
+    path ("login_usuario/", login_usuario, name ="Login"),
     path('show_cel_del',show_cel_del,name="show_cel_del"),#template donde se eliminan los celulares
     path('eliminar_cel/<int:id>',eliminar_celular,name='eliminar_cel'),#eliminacion deregistros de celulares
     path('show_cel_edit',show_cel_edit,name="show_cel_edit"),#template donde se eliminan los celulares
