@@ -4195,11 +4195,7 @@ textarea.form-control-lg {
     display: flex !important;
     flex-basis: auto;
   }
-  .navbar-expand-md .navbar-toggler {
-    display: none;
-  }
-  .navbar-expand-md .offcanvas-header {
-    display: none;
+
   }
   .navbar-expand-md .offcanvas {
     position: inherit;
@@ -11305,7 +11301,7 @@ textarea.form-control-lg {
   margin-top:25px;
   width:400px;
   background-color:white;
-  transition: transform 5s ease-in
+  transition: .7s
 }
 #botoninicio{
   margin-top: 25px;
