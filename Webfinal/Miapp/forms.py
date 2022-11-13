@@ -40,12 +40,56 @@ class Formulario_software (forms.ModelForm):
         fields=('__all__')
         widgets={
             'tipo': forms.TextInput(attrs={'class':'form-control','placeholder':'Ej:Windowss 11'}),
-            'marca':forms.TextInput(attrs={'class':'form-control','placeholder':'Ej:Microsof'}),
+            'marca':forms.TextInput(attrs={'class':'form-control','placeholder':'Ej:Microsoft'}),
             'stock':forms.NumberInput(attrs={'class':'form-control','placeholder':'Ingrese Cantidad'})
         }
 
 
-class UserRegisterForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ('username', 'last_name', 'first_name', 'email')
+class UserRegisterForm (UserCreationForm):
+    def __init__(self, *args, **kwargs): 
+        super().__init__(*args, **kwargs) 
+        self.fields['username'].widget.attrs.update({ 
+            'class': 'form-input', 
+            'required':'', 
+            'name':'username', 
+            'id':'username', 
+            'type':'text', 
+            'placeholder':'Ingrese nombre de usuario', 
+            'maxlength': '16', 
+            'minlength': '6', 
+            }) 
+        self.fields['email'].widget.attrs.update({ 
+            'class': 'form-input', 
+            'required':'', 
+            'name':'email', 
+            'id':'email', 
+            'type':'email', 
+            'placeholder':'Ingrese correo electrónico', 
+            }) 
+        self.fields['password1'].widget.attrs.update({ 
+            'class': 'form-input', 
+            'required':'', 
+            'name':'password1', 
+            'id':'password1', 
+            'type':'password', 
+            'placeholder':'Ingrese contraseña', 
+            'maxlength':'22',  
+            'minlength':'8' 
+            }) 
+        self.fields['password2'].widget.attrs.update({ 
+            'class': 'form-input', 
+            'required':'', 
+            'name':'password2', 
+            'id':'password2', 
+            'type':'password', 
+            'placeholder':'Repita contraseña', 
+            'maxlength':'22',  
+            'minlength':'8' 
+            }) 
+  
+    username = forms.CharField(max_length=20, label=False) 
+    email = forms.EmailField(max_length=100) 
+ 
+    class Meta: 
+        model = User 
+        fields = ('username', 'email', 'password1', 'password2', ) 
