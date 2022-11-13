@@ -3,10 +3,61 @@
 {% load static %}
 
 {% block Contenido_cambiante %}
+<style>
+    html, body {
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+    }
+    h1 {
+    margin: 0 0 20px;
+    font-weight: 400;
+    color: #1c87c9;
+    }
+    p {
+    margin: 0 0 5px;
+    }
+    .main-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1c87c9;
+    }
+    form {
+    padding: 25px;
+    margin: 25px;
+    box-shadow: 0 2px 5px #f5f5f5; 
+    background: #f5f5f5; 
+    }
+    .fas {
+    margin: 25px 10px 0;
+    font-size: 300px;
+    color: #fff;
+    }
+    .fa-envelope {
+    transform: rotate(-20deg);
+    }
+    .fa-at , .fa-mail-bulk{
+    transform: rotate(10deg);
+    }
+    input, textarea {
+    width: calc(100% - 0px);
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #1c87c9;
+    outline: none;
+    }
+    
+  </style>
 
 <span class="border border-warning">
         
-    <h1 class="display-5 fw-bolder text mb-2">Autenticación de usuario</h1>
+    <h1 class="display-5 fw-bolder text mb-2">Login</h1>
          
     <form action="{% url 'Login' %}" method="POST">{% csrf_token %}
 
@@ -14,6 +65,4 @@
 
     <input type="submit" value="Iniciar Sesión"/>
 
-</form>
-                
 {% endblock Contenido_cambiante %}
