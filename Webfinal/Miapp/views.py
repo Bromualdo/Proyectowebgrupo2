@@ -1,9 +1,10 @@
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from .models import Celulares, Insumos,Hardware,Software
-from .forms import UserRegisterForm,Formulario_Insumos, Formulario_celulares, Formulario_hardware, Formulario_software
+from .forms import UserRegisterForm,Formulario_Insumos, Formulario_celulares, Formulario_hardware, Formulario_software, UserRegisterForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 
 def inicio (request):
@@ -122,13 +123,26 @@ def show_cel_del(request):
 def show_cel_edit(request):
     lista=Celulares.objects.all()
     return render(request,"show_cel_edit.html",{"Celulares":lista})
-    
+""" 
+def registro_usuario(request): 
+    formulario_registro_usuario = UserRegisterForm(request.POST) 
+    if formulario_registro_usuario.is_valid(): 
+        formulario_registro_usuario.save() 
+        username = formulario_registro_usuario.cleaned_data.get('username') 
+        password = formulario_registro_usuario.cleaned_data.get('password') 
+        user = authenticate(username=username, password=password) 
+        login(request, user) 
+        return redirect('') 
+    context = { 
+        'form': formulario_registro_usuario
+    } 
+    return render(request, 'formulario_registro_usuario.html', context) """
 
-def registro_usuario(request):
 
+def registro_usuario (request):
     if request.method == 'POST':
     
-        formulario_registro_usuario = UserRegisterForm(request.POST)
+        formulario_registro_usuario = UserRegisterForm (request.POST)
     
         if formulario_registro_usuario.is_valid():
 	
@@ -144,8 +158,10 @@ def registro_usuario(request):
     else:
         formulario_registro_usuario = UserRegisterForm()
 	    
-        return render(request, "formulario_registro_usuario.html", {"formulario_registro": formulario_registro_usuario})
+        return render(request, "formulario_registro_usuario.html", {"form": formulario_registro_usuario})
 
+
+   
 def login_usuario (request):
 
     if request.method == 'POST':
