@@ -6,3 +6,4 @@ admin.site.register(Celulares)
 admin.site.register(Software)
 admin.site.register(Hardware)
 admin.site.register(Insumos)
+ 

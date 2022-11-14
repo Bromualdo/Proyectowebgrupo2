@@ -29,8 +29,9 @@
 =======
             <div class="container px-3">
                         
-            {% if user.is_authenticated %}
-                    <p style="color:white"> Usuario conectado: {{user.username}} </p>
+            {% if user.is_authenticated %}                             
+                    
+                    <p style="color:white"> Usuario conectado: {{user.username}} -{{user.group_id}}</p>
                     <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout</a>
                 {% else %}
                     <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Login' %}">Login</a>
@@ -46,14 +47,27 @@
                             <h1 class="display-5 fw-bolder text-white mb-2">Aplicación de control de stock</h1>
                             <p class="lead text-white-50 mb-4">Una forma de agregar productos y conocer su existencia</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Celulares'%}">Celulares</a>
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Hardware'%}">Hardware</a>
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Insumos'%}">Insumos</a>
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Software'%}">Software</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_cel'%}">Celulares</a>
+                                
+                                
+                                                         
+                                
+                                {                                 
+                                   
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_hard'%}">Hardware</a>
+                               
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_insumos'%}">Insumos</a>
+                               
+                                                        
+                                                              
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_soft'%}">Software</a>
+                                
                             </div>
                             <br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                {% if  perms.Miapp.add_permission %}  
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Registro'%}">Registro</a>
+                                {%endif%}
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Login'%}">Login</a>
                             </div>        
                         </div>

@@ -1,0 +1,22 @@
+
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block Contenido_cambiante %}
+
+        <span class="border border-warning">
+        
+        <h1 class="display-5 fw-bolder text mb-2">Modifica Hardware</h1>
+             
+        <h2 class="h4 fw-bolder">Ingrese :</h2>
+        
+        <form action = "{% url 'editar_hard' id %}"  class="h5 fw-normal"  method ="POST" > {% csrf_token %}
+       
+        {{ mi_formulario.as_p }}
+        
+        <input type="submit" class="btn btn-warning "  value = "Modificar"/>
+        </form>
+       </span>
+                 
+{% endblock Contenido_cambiante %}

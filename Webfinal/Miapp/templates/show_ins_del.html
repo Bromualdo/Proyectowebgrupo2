@@ -4,8 +4,7 @@
 
 {% block Contenido_cambiante %}
 
-
-<h1 class="display-5 fw-bolder text-black mb-2">Celulares </h1>
+<h1 class="display-5 fw-bolder text-black mb-2"> Modificacion de Celular</h1>
 <div class="card-header" style="background-color: rgba(244, 244, 136, 0.957);">
   <h4>Existencias actuales de celulares</h4>
 </div>
@@ -22,26 +21,26 @@
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
             <th scope="col">Stock</th>
+            <th scope="col">Accion</th>
+
           </tr>
         </thead>
-        {% for celus in Celulares %}
+        {% for items in Insumos %}
         <tbody>
           <tr>
             <th scope="row">{{celus.id}}</th>
-            <td>{{celus.marca}}</td>
-            <td>{{celus.modelo}}</td>
-            <td>{{celus.stock}}</td>
+            <td>{{items.marca}}</td>
+            <td>{{items.modelo}}</td>
+            <td>{{items.stock}}</td>
+            <td><div><form action="{% url 'eliminar_insumos' items.id %}" method="POST">{% csrf_token %}
+                <button class="btn btn-outline-dark">Eliminar</button>
+            </form></div></td>
           </tr>
         
         </tbody>
         {% endfor %}
     </table>
+   
 
-<div>    
-  <a class="btn btn-secondary btn-lg " href="{% url 'Celulares'%}">Agregar otro</a>
-  {% if  perms.Miapp.change_celulares %}  
-  <a class="btn btn-secondary btn-lg " href="{% url 'show_cel_edit'%}">Editar</a>
-  {% endif %}
-    
-</div>
-{% endblock %}
+
+    {% endblock %}
