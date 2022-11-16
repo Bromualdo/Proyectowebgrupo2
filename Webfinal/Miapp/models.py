@@ -1,6 +1,6 @@
-from multiprocessing.sharedctypes import Value
+
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+
 
 class Celulares (models.Model):
     marca= models.CharField (max_length=50)
@@ -34,3 +34,4 @@ class Software (models.Model):
     
     def __str__(self):
         return f'{self.tipo} - {self.marca} - {self.stock}'
+

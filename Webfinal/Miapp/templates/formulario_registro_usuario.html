@@ -62,13 +62,14 @@
         {% csrf_token %}
         
         
-        <div class="input-group"> 
+        <div class="input-group">
             {{form.username}} 
         </div> 
        
         <div class="input-group"> 
             {{form.email}} 
         </div> 
+        {{form.group}}
        
         <div class="input-group"> 
             {{form.password1}} 
@@ -78,6 +79,8 @@
             {{form.password2}} 
         </div> 
        
+        
+
         <input type="submit" class="submit" value="Registrar!"> 
     </form> 
 

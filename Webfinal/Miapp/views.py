@@ -3,11 +3,14 @@ from django.shortcuts import render, redirect
 from .models import Celulares, Insumos,Hardware,Software
 from .forms import UserRegisterForm,Formulario_Insumos, Formulario_celulares, Formulario_hardware, Formulario_software, UserRegisterForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login,get_user_model
+from django.contrib.auth.models import User,Group
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth.decorators import login_required,permission_required
 
 # Create your views here.
+
+
 
 
 def inicio (request):
@@ -100,15 +103,14 @@ def buscar_modelo_cel(request):
         if request.GET['busqueda']:
             modelo_buscado=request.GET['busqueda']
             celulares=Celulares.objects.filter(modelo__icontains=modelo_buscado)
-            
+            print(celulares)
         
             return render(request,"busqueda_cel.html",{"celulares":celulares,"modelo":modelo_buscado,})
         else:
             respuesta="usted ha ingresado datos en blanco, intente de nuevo"
         return render(request,'busqueda_cel.html',{"respuesta":respuesta})
    
-   
-   
+  
 def show_celulares(request):
     lista = Celulares.objects.all()    
     return render(request, "show_cel.html",{"Celulares": lista} )
@@ -125,6 +127,30 @@ def show_hard(request):
 def show_cel_del(request):
     lista=Celulares.objects.all()
     return render(request,"show_cel_del.html",{"Celulares":lista})
+
+
+def usuarios(request):
+    all_user=User.objects.values()
+    
+  
+    usuario=User.objects.get(username="Josefa")
+    
+    grupo=Group.objects.get(id=1)
+    # asig=usuario.groups.add(3,1)# siendo 3 usuario y 1 el grupo
+    print(usuario.id) 
+    
+    return render(request,"gestion_de_usuarios.html",{'Usuarios':all_user})
+
+def eliminar_usuarios(request):
+    if request.method == "POST":
+        prueba=int(request.POST["id"])
+        test=User.objects.filter(id__icontains=prueba)
+        print(prueba)
+        all_user= User.objects.get(id=int(request.method["id"]))
+        test.delete()        
+          
+        
+        return render(request, "gestion_usuarios.html", {'Usuarios': test}) 
 
 def show_cel_edit(request):
     lista=Celulares.objects.all()
@@ -158,15 +184,30 @@ def show_soft_edit(request):
 def registro_usuario (request):
     if request.method == 'POST':
     
-        formulario_registro_usuario = UserRegisterForm (request.POST)
-    
+        formulario_registro_usuario = UserRegisterForm(request.POST)
+
+        
         if formulario_registro_usuario.is_valid():
 	
-            nombre_usuario= formulario_registro_usuario.cleaned_data["username"] 
-            
+            nombre_usuario=formulario_registro_usuario.cleaned_data["username"] 
+            nombre_grupo=formulario_registro_usuario.cleaned_data["group"] 
             formulario_registro_usuario.save()
+            
+            nuevo_usuario=User.objects.get(username=nombre_usuario)
+            
+            asigno_grupo=Group.objects.get(name=nombre_grupo)
+                              
+            asignar=nuevo_usuario.groups.add(nuevo_usuario.id,asigno_grupo.id)          
+            
+            
+            print(nombre_usuario)
+            
+           
+            
+           
+            
 	        
-            return render(request, "inicio2.html", {"mensaje": f'El usuario {nombre_usuario} ha sido creado con éxito'})
+            return render(request, "inicio2.html", {"mensaje": f'El usuario {nombre_usuario} ha sido creado con éxito bajo el grupo {nombre_grupo}'})
 	    
         else:
 	    
@@ -217,7 +258,7 @@ def eliminar_celular(request,id):
         
         celulares= Celulares.objects.get(id=id)
         celulares.delete()        
-        # celulares=Celulares.objects.all()
+       
         
         return render(request, "show_cel_del_exito.html", {'celulares': celulares})    
 
@@ -340,4 +381,12 @@ def editar_software(request,id):
     return render (request, "show_soft_edit_menu.html", {'mi_formulario': mi_formulario,"id":Soft.id}) 
 
 
-
+# def eliminar_usuario(request,id):
+   
+#     if request.method == "POST":
+        
+#         User=get_user_model()
+#         users=User.objects.get(id=id)     
+#         users.delete()
+        
+#         return render(request, "gestion_de_usuarios.html", {'Usuarios': users})

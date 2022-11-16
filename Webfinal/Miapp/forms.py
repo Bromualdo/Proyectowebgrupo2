@@ -1,7 +1,7 @@
 from django import forms
 from .models import Celulares,Insumos,Software,Hardware
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 
 
 class Formulario_celulares (forms.ModelForm):
@@ -48,6 +48,7 @@ class Formulario_software (forms.ModelForm):
 class UserRegisterForm (UserCreationForm):
     def __init__(self, *args, **kwargs): 
         super().__init__(*args, **kwargs) 
+        
         self.fields['username'].widget.attrs.update({ 
             'class': 'form-input', 
             'required':'', 
@@ -85,11 +86,20 @@ class UserRegisterForm (UserCreationForm):
             'placeholder':'Repita contraseña', 
             'maxlength':'22',  
             'minlength':'8' 
-            }) 
+            })
+        self.fields['group'].widget.attrs.update({
+            'class': 'custom-select',
+            
+        })
+        
+        
   
     username = forms.CharField(max_length=20, label=False) 
-    email = forms.EmailField(max_length=100) 
- 
+    email = forms.EmailField(max_length=100)
+    group=forms.ModelChoiceField(queryset=Group.objects.all(),required=True) 
+    
+
     class Meta: 
         model = User 
-        fields = ('username', 'email', 'password1', 'password2', ) 
+        fields = ('username', 'email', 'password1', 'password2','group') 
+

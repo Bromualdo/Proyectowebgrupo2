@@ -1,0 +1,53 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block Contenido_cambiante %}
+
+
+<h1 class="display-5 fw-bolder text-black mb-2">Usuarios </h1>
+<div class="card-header" style="background-color: rgba(244, 244, 136, 0.957);">
+  <h4>Existencias actuales de usuarios</h4>
+</div>
+
+
+
+
+       
+    <table class="table table-sm">
+        
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Grupo</th>
+          </tr>
+        </thead>        
+              
+       
+            {% for usuario in Usuarios %}
+            
+        <tbody>
+          <tr>
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.username}}</td>
+            <td>{{usuario.email}}</td>
+            
+            <td><div><form action="{% url 'eliminar_usuario' %}" method="POST">{% csrf_token %}
+                <button class="btn btn-outline-dark">Eliminar</button>
+           
+            {% endfor %}                         
+            </tr>
+        
+        </tbody>
+       
+        
+    </table>
+
+<div>    
+
+ 
+    
+</div>
+{% endblock %}
