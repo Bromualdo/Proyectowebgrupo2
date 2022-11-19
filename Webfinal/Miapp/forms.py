@@ -1,6 +1,6 @@
 from django import forms
 from .models import Celulares,Insumos,Software,Hardware
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User,Group
 
 
@@ -88,7 +88,7 @@ class UserRegisterForm (UserCreationForm):
             'minlength':'8' 
             })
         self.fields['group'].widget.attrs.update({
-            'class': 'custom-select custom-select-lg mb-3',
+            'class': 'custom-select',
             
         })
         
@@ -103,24 +103,3 @@ class UserRegisterForm (UserCreationForm):
         model = User 
         fields = ('username', 'email', 'password1', 'password2','group') 
 
-# class Asignogrupo (UserCreationForm):
-    
-#     def __init__(self, *args, **kwargs): 
-#         super().__init__(*args, **kwargs)
-            
-#         self.fields['username'].widget.attrs.update({ 
-#             'class': 'form-input', 
-#             'required':'', 
-#             'name':'username', 
-            
-#             })         
-#         self.fields['group'].widget.attrs.update({
-#             'class': 'custom-select custom-select-lg mb-3',
-#             })
-            
-#         username = forms.CharField(max_length=20, label=False) 
-#         group=forms.ModelChoiceField(queryset=Group.objects.all(),required=True) 
-        
-#     class Meta:
-#         model = User
-#         fields = ('username','group')    

@@ -33,7 +33,8 @@ def celulares (request):
             mi_formulario = Formulario_celulares ()
     return render (request, "lista_celulares.html", {'mi_formulario': mi_formulario})
     
-    
+@permission_required("miapp.edit_hardware")
+@login_required   
 def hardware (request):
     if request.method == "POST":
         mi_formulario = Formulario_hardware (request.POST)
@@ -46,6 +47,8 @@ def hardware (request):
             mi_formulario = Formulario_hardware ()
     return render (request, "lista_hardware.html", {'mi_formulario': mi_formulario})
 
+@permission_required("miapp.edit_software")
+@login_required  
 def software (request):
     if request.method == "POST":
         mi_formulario = Formulario_software (request.POST)
@@ -58,7 +61,8 @@ def software (request):
             mi_formulario = Formulario_software ()
     return render (request, "lista_software.html", {'mi_formulario': mi_formulario})
     
-
+@permission_required("miapp.edit_insumos")
+@login_required  
 def insumos (request):
     if request.method == "POST":
         mi_formulario = Formulario_Insumos (request.POST)
@@ -197,8 +201,9 @@ def registro_usuario (request):
             
             asigno_grupo=Group.objects.get(name=nombre_grupo)
                               
-            nuevo_usuario.groups.add(nuevo_usuario.id,asigno_grupo.id)          
-                    
+            nuevo_usuario.groups.add(asigno_grupo.id)                   
+                                           
+            	        
             return render(request, "inicio2.html", {"mensaje": f'El usuario {nombre_usuario} ha sido creado con éxito bajo el grupo {nombre_grupo}'})
 	    
         else:
