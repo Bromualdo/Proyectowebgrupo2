@@ -14,6 +14,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{%static 'css/styles.css'%}" rel="stylesheet" />
     </head>
+    
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,6 +29,7 @@
                 {% else %}
                     <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Login' %}">Login</a>
                 {% endif %}
+                
         </nav>
         <!-- Header-->
         <header class="bg-dark py-1">
@@ -35,28 +37,60 @@
                 <div class="row  justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center my-5">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Aplicación de control de stock</h1>
-                            <p class="lead text-white-50 mb-4">Una forma de agregar productos y conocer su existencia</p>
+                            
+                             <h1 class="display-5 fw-bolder text-white mb-2">UpStock! ®</h1> 
+                            <p class="lead text-white-50 mb-4">La aplicación más intuitiva para el manejo y control de
+                                la mercadería de tu local </p>
+                                 
+                            <!-- clock widget start -->
+                            <script type="text/javascript"> var css_file=document.createElement("link"); 
+                            css_file.setAttribute("rel","stylesheet"); css_file.setAttribute("type","text/css"); 
+                            css_file.setAttribute("href","https://s.bookcdn.com//css/cl/bw-cl-180x170r9.css?v=0.0.1");
+                            document.getElementsByTagName("head")[0].appendChild(css_file);
+                            </script> <div id="tw_19_1704680239">
+                            <div style="width:120px; height:140px; margin: 0 auto;">
+                            <a href="https://hotelmix.es/time/parana-30036">Paraná</a><br/></div></div> <script type="text/javascript"> function setWidgetData_1704680239(data){ if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = ''; var params = data.results[i]; objMainBlock = document.getElementById('tw_'+params.widget_type+'_'+params.widget_id); if(objMainBlock !== null) objMainBlock.innerHTML = params.html_code; } } } var clock_timer_1704680239 = -1; widgetSrc = "https://widgets.booked.net/time/info?ver=2;domid=582;type=19;id=1704680239;scode=24454;city_id=30036;wlangid=4;mode=2;details=0;background=ffffff;border_color=ffffff;color=f2edf2;add_background=ffffff;add_color=333333;head_color=ffffff;border=0;transparent=0"; var widgetUrl = location.href; widgetSrc += '&ref=' + widgetUrl; var wstrackId = ""; if (wstrackId) { widgetSrc += ';wstrackId=' + wstrackId + ';' } var timeBookedScript = document.createElement("script"); timeBookedScript.setAttribute("type", "text/javascript"); timeBookedScript.src = widgetSrc; document.body.appendChild(timeBookedScript); </script>
+                            <!-- clock widget end -->
+    
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_cel'%}">Celulares</a>
-                                
-                                
-                                                         
-                                
-                                {                                 
                                    
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_hard'%}">Hardware</a>
                                
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_insumos'%}">Insumos</a>
                                
-                                                        
-                                                              
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_soft'%}">Software</a>
                                 
+                                                                
                             </div>
+                            
                             <br>
                             <p style= "text-align:center;"> <img src= "https://media.tenor.com/2fXbn6Xtt0UAAAAC/software-software-development.gif" width= "250" height = "200" alt="Inicio"> </p> 
-                       c
+                            
+                            <details>
+                                <summary style= "color:white">Sobre nosotros</summary>
+                                <br>
+                                <p style="color:orange"> Somos un grupo de entusiastas de la tecnología
+                                recientemente iniciados en el mundo de la programación backend y frontend. 
+                                Nuestro objetivo es crear aplicaciones intuitivas, de diseño simple y un 
+                                alto grado de UX. Nos enfocamos al pequeño comerciante o mini pyme que
+                                requiere el acceso a aplicaciones para el uso diario en su emprendimiento.
+                                Nuestro código permite un alto grado de escalabilidad y funcionalidad si
+                                el cliente desea una expansión de sus actividades o negocios. Con ello
+                                logramos una soluciones rápidas, efectivas y de menores costos. 
+                                </p>
+                            </details>
+
+                            <details>
+                                <summary style= "color:white">Contacto</summary>
+                                <br>
+                                <p style="color:orange">
+                                    prinsichadan@gmail.com / adrianpozzi@gmail.com     <br>
+                                    1145678923
+                                </p>
+                            </details>
+
+
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 {% if  perms.Miapp.add_permission %}  
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Registro'%}">Registro</a>
