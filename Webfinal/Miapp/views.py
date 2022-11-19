@@ -197,16 +197,8 @@ def registro_usuario (request):
             
             asigno_grupo=Group.objects.get(name=nombre_grupo)
                               
-            asignar=nuevo_usuario.groups.add(nuevo_usuario.id,asigno_grupo.id)          
-            
-            
-            print(nombre_usuario)
-            
-           
-            
-           
-            
-	        
+            nuevo_usuario.groups.add(nuevo_usuario.id,asigno_grupo.id)          
+                    
             return render(request, "inicio2.html", {"mensaje": f'El usuario {nombre_usuario} ha sido creado con éxito bajo el grupo {nombre_grupo}'})
 	    
         else:
