@@ -34,7 +34,7 @@
             <td>{{usuario.username}}</td>
             <td>{{usuario.email}}</td>
             
-            <td><div><form action="{% url 'eliminar_usuario' %}" method="POST">{% csrf_token %}
+            <td><div><form action="{% url 'eliminar_usuario' usuario.id %}" method="POST">{% csrf_token %}
                 <button class="btn btn-outline-dark">Eliminar</button>
            
             {% endfor %}                         

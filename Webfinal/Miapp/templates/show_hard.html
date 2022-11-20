@@ -35,8 +35,10 @@
         {% endfor %}
     </table>
 
-
-<a class="btn btn-secondary btn-lg " href="{% url 'Hardware'%}">Agregar otro</a>
+    {% if  perms.Miapp.add_hardware %}  
+<a class="btn btn-secondary btn-lg " href="{% url 'Hardware'%}">Agregar</a>
+{% endif %}
+{% if  perms.Miapp.change_hardware %}  
 <a class="btn btn-secondary btn-lg " href="{% url 'show_hard_edit'%}">Editar</a>
-
+{% endif %}
 {% endblock %}

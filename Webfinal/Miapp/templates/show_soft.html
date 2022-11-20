@@ -42,8 +42,12 @@
 
 
 
-
-<a class="btn btn-secondary btn-lg " href="{% url 'Software'%}">Agregar otro</a>
+    
+{% if  perms.Miapp.add_software %}
+<a class="btn btn-secondary btn-lg " href="{% url 'Software'%}">Agregar</a>
+{% endif %}
+{% if  perms.Miapp.change_software %}
 <a class="btn btn-secondary btn-lg " href="{% url 'show_soft_edit'%}">Editar</a>
+{% endif %}
 
 {% endblock %}

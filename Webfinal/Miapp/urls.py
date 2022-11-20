@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 from .models import Hardware, Software, Insumos, Celulares
-from .views import agregado, celulares, hardware, inicio, insumos, show_celulares,software,buscar_modelo_cel,show_hard, show_insumos,show_soft,nuevin, registro_usuario,eliminar_celular,show_cel_del,editar_celular,show_cel_edit, login_usuario,editar_hardware,eliminar_hardware,show_hard_del,show_hard_edit,show_ins_del,show_ins_edit,editar_insumos,eliminar_insumos,editar_software,show_soft_edit,eliminar_software,show_soft_del,usuarios,eliminar_usuarios   
+from .views import agregado, celulares, hardware, inicio, insumos, show_celulares,software,buscar_modelo_cel,show_hard, show_insumos,show_soft,registro_usuario,eliminar_celular,show_cel_del,editar_celular,show_cel_edit, login_usuario,editar_hardware,eliminar_hardware,show_hard_del,show_hard_edit,show_ins_del,show_ins_edit,editar_insumos,eliminar_insumos,editar_software,show_soft_edit,eliminar_software,show_soft_del,usuarios,eliminar_usuarios   
 
 
 urlpatterns = [
@@ -16,7 +16,6 @@ urlpatterns = [
     path('show_hard/',show_hard,name="show_hard"),
     path('show_insumos/',show_insumos,name="show_insumos"),
     path('show_soft/',show_soft,name="show_soft"),
-    path('nuevin/',nuevin),
     path('formulario_registro_usuario/', registro_usuario, name ="Registro"),
     path ("login_usuario/", login_usuario, name ="Login"),
     path ("logout_usuario/", LogoutView.as_view (template_name= "logout.html"), name = "Logout"),
@@ -37,5 +36,5 @@ urlpatterns = [
     path('show_soft_edit/',show_soft_edit,name="show_soft_edit"),
     path('editar_software/<int:id>',editar_software,name='editar_software'),
     path('gestion_usuarios',usuarios,name='Usuarios'),
-    path('eliminar_usuario/',eliminar_usuarios,name='eliminar_usuario'),
+    path('eliminar_usuario/<int:id>',eliminar_usuarios,name='eliminar_usuario'),
 ]

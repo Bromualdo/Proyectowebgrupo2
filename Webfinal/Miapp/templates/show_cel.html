@@ -38,7 +38,7 @@
 
 <div> 
   {% if  perms.Miapp.add_celulares %}     
-  <a class="btn btn-secondary btn-lg " href="{% url 'Celulares'%}">Agregar otro</a>
+  <a class="btn btn-secondary btn-lg " href="{% url 'Celulares'%}">Agregar</a>
   {% endif %}
   {% if  perms.Miapp.change_celulares %}  
   <a class="btn btn-secondary btn-lg " href="{% url 'show_cel_edit'%}">Editar</a>

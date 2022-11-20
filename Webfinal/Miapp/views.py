@@ -16,10 +16,7 @@ from django.contrib.auth.decorators import login_required,permission_required
 def inicio (request):
     return render(request,"inicio.html")
 
-def nuevin(request):
-    return render(request,'nuevin.html')
-
-@permission_required("miapp.edit_celulares")
+@permission_required('Miapp.add_celulares', raise_exception=True)
 @login_required
 def celulares (request):
     if request.method == "POST":
@@ -33,7 +30,7 @@ def celulares (request):
             mi_formulario = Formulario_celulares ()
     return render (request, "lista_celulares.html", {'mi_formulario': mi_formulario})
     
-@permission_required("miapp.edit_hardware")
+@permission_required('Miapp.add_hardware', raise_exception=True)
 @login_required   
 def hardware (request):
     if request.method == "POST":
@@ -47,7 +44,7 @@ def hardware (request):
             mi_formulario = Formulario_hardware ()
     return render (request, "lista_hardware.html", {'mi_formulario': mi_formulario})
 
-@permission_required("miapp.edit_software")
+@permission_required('Miapp.add_software', raise_exception=True)
 @login_required  
 def software (request):
     if request.method == "POST":
@@ -60,8 +57,8 @@ def software (request):
     else:
             mi_formulario = Formulario_software ()
     return render (request, "lista_software.html", {'mi_formulario': mi_formulario})
-    
-@permission_required("miapp.edit_insumos")
+ 
+@permission_required('Miapp.add_insumos', raise_exception=True)    
 @login_required  
 def insumos (request):
     if request.method == "POST":
@@ -75,10 +72,14 @@ def insumos (request):
             mi_formulario = Formulario_Insumos ()
     return render (request, "lista_insumos.html", {'mi_formulario': mi_formulario})
     
-
+   
+@login_required(login_url='Inicio')  
 def agregado (request):
     return render (request, "agregado.html")
 
+
+   
+@login_required(login_url='Inicio')  
 def formulario_insumo (request):
     if request.method == "POST":
         mi_formulario = Formulario_Insumos (request.POST)
@@ -91,6 +92,9 @@ def formulario_insumo (request):
             mi_formulario = Formulario_Insumos ()
     return render (request, "formulario_insumo.html", {'mi_formulario': mi_formulario})
 
+
+   
+@login_required(login_url='Inicio')  
 def formulario_software (request):
     if request.method == "POST":
         mi_formulario = Formulario_software (request.POST)
@@ -103,6 +107,9 @@ def formulario_software (request):
             mi_formulario = Formulario_software ()
     return render (request, "formulario_software.html", {'mi_formulario': mi_formulario})
 
+
+   
+@login_required(login_url='Inicio')  
 def buscar_modelo_cel(request):
         if request.GET['busqueda']:
             modelo_buscado=request.GET['busqueda']
@@ -114,77 +121,98 @@ def buscar_modelo_cel(request):
             respuesta="usted ha ingresado datos en blanco, intente de nuevo"
         return render(request,'busqueda_cel.html',{"respuesta":respuesta})
    
-  
+@login_required(login_url='Inicio')  
 def show_celulares(request):
     lista = Celulares.objects.all()    
     return render(request, "show_cel.html",{"Celulares": lista} )
+@login_required(login_url='Inicio')  
 def show_insumos(request):
     lista = Insumos.objects.all()    
     return render(request, "show_insumos.html",{"Insumos": lista} )
+@login_required(login_url='Inicio')  
 def show_soft(request):
     lista = Software.objects.all()    
     return render(request, "show_soft.html",{"Software": lista} )
+@login_required(login_url='Inicio')  
 def show_hard(request):
     lista = Hardware.objects.all()    
     return render(request, "show_hard.html",{"Hardware": lista} )
 
+
+@login_required(login_url='Inicio')  
 def show_cel_del(request):
     lista=Celulares.objects.all()
     return render(request,"show_cel_del.html",{"Celulares":lista})
 
-
+@login_required(login_url='Inicio')  
 def usuarios(request):
     all_user=User.objects.values()
+          
     
-  
-    usuario=User.objects.get(username="Josefa")
     
-    grupo=Group.objects.get(id=1)
     # asig=usuario.groups.add(3,1)# siendo 3 usuario y 1 el grupo
-    print(usuario.id) 
+    
     
     return render(request,"gestion_de_usuarios.html",{'Usuarios':all_user})
 
-def eliminar_usuarios(request):
+
+def eliminar_usuarios(request,id):
     if request.method == "POST":
         prueba=int(request.POST["id"])
-        test=User.objects.filter(id__icontains=prueba)
+        test=User.objects.get(id=id)
         print(prueba)
-        all_user= User.objects.get(id=int(request.method["id"]))
+        
         test.delete()        
           
         
         return render(request, "gestion_usuarios.html", {'Usuarios': test}) 
 
+
+
+
+@login_required(login_url='Inicio')  
 def show_cel_edit(request):
     lista=Celulares.objects.all()
     return render(request,"show_cel_edit.html",{"Celulares":lista})
 
+
+@login_required(login_url='Inicio')  
 def show_hard_del(request):
     lista=Hardware.objects.all()
     return render(request,"show_hard_del.html",{"Hardware":lista})
 
+
+@login_required(login_url='Inicio')  
 def show_hard_edit(request):
     lista=Hardware.objects.all()
     return render(request,"show_hard_edit.html",{"Hardware":lista})
 
+
+@login_required(login_url='Inicio')  
 def show_ins_del(request):
     lista=Insumos.objects.all()
     return render(request,"show_ins_del.html",{"Insumos":lista})
 
+
+@login_required(login_url='Inicio')  
 def show_ins_edit(request):
     lista=Insumos.objects.all()
     return render(request,"show_ins_edit.html",{"Insumos":lista})
 
+
+@login_required(login_url='Inicio')  
 def show_soft_del(request):
     lista=Software.objects.all()
     return render(request,"show_soft_del.html",{"Software":lista})
 
+
+@login_required(login_url='Inicio')  
 def show_soft_edit(request):
     lista=Software.objects.all()
     return render(request,"show_soft_edit.html",{"Software":lista})
 
 
+@login_required(login_url='Inicio')  
 def registro_usuario (request):
     if request.method == 'POST':
     
@@ -215,6 +243,7 @@ def registro_usuario (request):
         return render(request, "formulario_registro_usuario.html", {"form": formulario_registro_usuario})
 
    
+
 def login_usuario (request):
 
     if request.method == 'POST':
@@ -249,6 +278,8 @@ def login_usuario (request):
         return render(request, "login.html", {"formulario_login": formulario_login_usuario})
 
 
+
+login_required(login_url='Inicio')  
 def eliminar_celular(request,id):
     
     if request.method == "POST":
@@ -259,6 +290,8 @@ def eliminar_celular(request,id):
         
         return render(request, "show_cel_del_exito.html", {'celulares': celulares})    
 
+
+@login_required(login_url='Inicio')  
 def editar_celular(request,id):
     
     celulares=Celulares.objects.get(id=id)
@@ -280,6 +313,7 @@ def editar_celular(request,id):
             })
     return render (request, "show_cel_edit_menu.html", {'mi_formulario': mi_formulario,"id":celulares.id})   
 
+login_required(login_url='Inicio')  
 def eliminar_hardware(request,id):
     
     if request.method == "POST":
@@ -290,6 +324,8 @@ def eliminar_hardware(request,id):
         
         return render(request, "show_hard_del_exito.html", {'Hardware': Hard})    
 
+
+@login_required(login_url='Inicio')  
 def editar_hardware(request,id):
     
     Hard=Hardware.objects.get(id=id)
@@ -311,8 +347,9 @@ def editar_hardware(request,id):
                 "stock": Hard.stock
             })
     return render (request, "show_hard_edit_menu.html", {'mi_formulario': mi_formulario,"id":Hard.id})
-    
-    
+
+
+login_required(login_url='Inicio')  
 def eliminar_insumos(request,id):
     
     if request.method == "POST":
@@ -323,6 +360,8 @@ def eliminar_insumos(request,id):
         
         return render(request, "show_ins_del_exito.html", {'Insumos': Ins})    
 
+
+@login_required(login_url='Inicio')  
 def editar_insumos(request,id):
     
     Ins=Insumos.objects.get(id=id)
@@ -345,6 +384,7 @@ def editar_insumos(request,id):
             })
     return render (request, "show_ins_edit_menu.html", {'mi_formulario': mi_formulario,"id":Ins.id})
 
+login_required(login_url='Inicio')  
 def eliminar_software(request,id):
     
     if request.method == "POST":
@@ -354,7 +394,10 @@ def eliminar_software(request,id):
         
         
         return render(request, "show_soft_del_exito.html", {'Software': Soft})    
+    
 
+
+@login_required(login_url='Inicio')  
 def editar_software(request,id):
     
     Soft=Software.objects.get(id=id)
@@ -376,14 +419,3 @@ def editar_software(request,id):
                 "stock": Soft.stock
             })
     return render (request, "show_soft_edit_menu.html", {'mi_formulario': mi_formulario,"id":Soft.id}) 
-
-
-# def eliminar_usuario(request,id):
-   
-#     if request.method == "POST":
-        
-#         User=get_user_model()
-#         users=User.objects.get(id=id)     
-#         users.delete()
-        
-#         return render(request, "gestion_de_usuarios.html", {'Usuarios': users})
