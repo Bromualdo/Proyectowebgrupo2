@@ -61,15 +61,17 @@
     <form method="POST" action = "." class="login-form spacer" id="signup-form"> 
         {% csrf_token %}
         
-        
         <div class="input-group">
-            {{form.username}} 
+            {{form.username}}  
         </div> 
        
         <div class="input-group"> 
             {{form.email}} 
-        </div> 
-        {{form.group}}
+        </div>
+        
+        <div class="input-group">
+            {{form.group}}
+        </div>
        
         <div class="input-group"> 
             {{form.password1}} 
