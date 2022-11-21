@@ -21,6 +21,7 @@
             <th scope="col">#</th>
             <th scope="col">Usuario</th>
             <th scope="col">Mail</th>
+            <th scope="col">Ultimo logueo</th>
             <th scope="col">Grupo</th>
           </tr>
         </thead>        
@@ -33,9 +34,14 @@
             <th scope="row">{{usuario.id}}</th>
             <td>{{usuario.username}}</td>
             <td>{{usuario.email}}</td>
-            <td>{{usuario.grupo}}</td>
+            <td>{{usuario.last_login}}</td>
+            <td>{{usuario.date_joined}}</td>
             
        
+       
+        
+       {% endfor %}
+        
         
     </table>
 
