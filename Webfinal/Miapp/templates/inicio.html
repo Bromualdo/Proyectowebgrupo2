@@ -26,14 +26,11 @@
             {% endif %}    
             
             {% if user.is_authenticated %}                             
-<<<<<<< HEAD
-                    
-                    <p style="color:white"> Usuario conectado: {{user.username}} -{{user.groups.all.0}}</p>
-                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout</a>
-=======
+</div class=" center">
                     <p style="color:white"> Usuario conectado: {{user.username}} - {{user.groups.all.0}}  <img class="icon input-icon" src="{% static 'assets/usuario_conectado.svg' %}" alt=""></p>
+                    <div>
                     <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
->>>>>>> b08544d6f0cc8588f6de5ab5a590d25ced008107
+
                 {% else %}
                 <p style="color: LightSkyBlue">El login del usuario es obligatorio para acceder a los contenidos </p>
                 <a  class="btn btn-outline-light btn-lg px-4" href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.svg' %}" alt=""></a> 
@@ -98,10 +95,12 @@
                                 <br>
                                 <p style="color:orange">
                                     prinsichadan@gmail.com / adrianpozzi@gmail.com     <br>
-                                    1145678923
+                                    1145678923/1164042282
                                 </p>
                             </details>
-
+                                <div>
+                              <p></p>
+                                </div>
 
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 {% if  perms.Miapp.add_permission %}  
