@@ -8,7 +8,7 @@
 <div class="card-header" style="background-color: rgba(244, 244, 136, 0.957);">
   <h4>Existencias actuales de hardware</h4>
 </div>
-
+<div>
 
 
        
@@ -34,8 +34,8 @@
         </tbody>
         {% endfor %}
     </table>
-
-    {% if  perms.Miapp.add_hardware %}  
+</div>
+{% if  perms.Miapp.add_hardware %}  
 <a class="btn btn-secondary btn-lg " href="{% url 'Hardware'%}">Agregar</a>
 {% endif %}
 {% if  perms.Miapp.change_hardware %}  

@@ -11312,3 +11312,9 @@ textarea.form-control-lg {
     background-size: cover
   }
 
+#choose{
+  
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom:25px
+}

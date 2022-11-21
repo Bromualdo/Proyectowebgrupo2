@@ -89,6 +89,7 @@ class UserRegisterForm (UserCreationForm):
             })
         self.fields['group'].widget.attrs.update({
             'class': 'custom-select',
+            'id':"choose"
             
         })
         
