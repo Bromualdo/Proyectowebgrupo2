@@ -57,12 +57,12 @@
 
 <span class="border border-warning">
         
-    <h1 class="display-5 fw-bolder text mb-2">Login</h1>
+    <h1 class="display-5 fw-bolder text mb-2">Login</h1> 
          
     <form action="{% url 'Login' %}" method="POST">{% csrf_token %}
 
     {{formulario_login.as_p}}
 
-    <input type="submit" value="Iniciar Sesión"/>
+    <input type="submit" value="Iniciar Sesión"/> 
 
 {% endblock Contenido_cambiante %}

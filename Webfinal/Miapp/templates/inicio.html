@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>UpStock! ®</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static '/assets/iconito.png'%}" />
+        <link rel="icon" type="image/x-icon" href="{% static '/assets/thumbup.png'%}" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -22,15 +22,15 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             {% if  perms.Miapp.delete_celulares %}   
-                <a class="btn btn-outline-light btn-lg px-4" href="{%url 'Registro'%}">Registro</a>
+                <a class="btn btn-outline-light btn-lg px-4" href="{%url 'Registro'%}"> <img class="icon input-icon" src="{% static 'assets/registro.png' %}" alt="">Registro</a>
             {% endif %}    
             
             {% if user.is_authenticated %}                             
-                    <p style="color:white"> Usuario conectado: {{user.username}} - {{user.group_id}}</p>
-                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout</a>
+                    <p style="color:white"> Usuario conectado: {{user.username}} - {{user.groups.all.0}}  <img class="icon input-icon" src="{% static 'assets/usuario_conectado.svg' %}" alt=""></p>
+                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
                 {% else %}
                 <p style="color: LightSkyBlue">El login del usuario es obligatorio para acceder a los contenidos </p>
-                <a  class="btn btn-outline-light btn-lg px-4" href="{% url 'Login' %}">Login de usuario</a> 
+                <a  class="btn btn-outline-light btn-lg px-4" href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.svg' %}" alt=""></a> 
             {% endif %}
         </nav>
         <!-- Header-->
@@ -100,6 +100,7 @@
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 {% if  perms.Miapp.add_permission %}  
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Registro'%}">Registro</a>
+
                                 {%endif%}
                                 
                             </div>        
