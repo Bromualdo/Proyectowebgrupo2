@@ -33,12 +33,16 @@
             <td>{{items.marca}}</td>
             <td>{{items.modelo}}</td>
             <td>{{items.stock}}</td>
+            {% if  perms.Miapp.delete_hardware %}  
             <td><div><form action="{% url 'eliminar_hard' items.id %}" method="POST">{% csrf_token %}
                 <button class="btn btn-outline-dark">Eliminar</button>
             </form></div></td>
+            {% endif %}
+            {% if  perms.Miapp.change_hardware %}  
             <td><div><a href="{% url 'editar_hard' items.id %}">{% csrf_token %}
                 <button class="btn btn-outline-dark">Editar</button>
             </a></div></td>
+            {% endif %}
           </tr>
         
         </tbody>

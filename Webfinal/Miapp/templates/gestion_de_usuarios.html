@@ -33,14 +33,8 @@
             <th scope="row">{{usuario.id}}</th>
             <td>{{usuario.username}}</td>
             <td>{{usuario.email}}</td>
+            <td>{{usuario.grupo}}</td>
             
-            <td><div><form action="{% url 'eliminar_usuario' usuario.id %}" method="POST">{% csrf_token %}
-                <button class="btn btn-outline-dark">Eliminar</button>
-           
-            {% endfor %}                         
-            </tr>
-        
-        </tbody>
        
         
     </table>

@@ -33,12 +33,16 @@
             <td>{{celus.marca}}</td>
             <td>{{celus.modelo}}</td>
             <td>{{celus.stock}}</td>
+            {% if  perms.Miapp.delete_celulares %} 
             <td><div><form action="{% url 'eliminar_cel' celus.id %}" method="POST">{% csrf_token %}
                 <button class="btn btn-outline-dark">Eliminar</button>
             </form></div></td>
+            {% endif %}
+            {% if  perms.Miapp.change_celulares %} 
             <td><div><a href="{% url 'editar_cel' celus.id %}">{% csrf_token %}
                 <button class="btn btn-outline-dark">Editar</button>
             </a></div></td>
+            {% endif %}
           </tr>
         
         </tbody>
