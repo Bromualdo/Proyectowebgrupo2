@@ -107,7 +107,6 @@ def formulario_software (request):
             mi_formulario = Formulario_software ()
     return render (request, "formulario_software.html", {'mi_formulario': mi_formulario})
 
-
 @permission_required('Miapp.change_celulares', raise_exception=True)         
 @login_required(login_url='Inicio')  
 def buscar_modelo_cel(request):
