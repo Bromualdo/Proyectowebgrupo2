@@ -27,13 +27,14 @@
             
             {% if user.is_authenticated %}                             
 </div class=" center">
-                    <p style="color:white"> Usuario conectado: {{user.username}} - {{user.groups.all.0}}  <img class="icon input-icon" src="{% static 'assets/usuario_conectado.svg' %}" alt=""></p>
+                
+                    <h4 style="color:white;text-align: center">Usuario conectado: {{user.username}} - {{user.groups.all.0}}  <img class="icon input-icon" src="{% static 'assets/usuario_conectado.svg' %}" alt=""></h4>
                     <div>
-                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
+                    <a class="btn btn-outline-light btn-lg px-4"   href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
 
                 {% else %}
                 <p style="color: LightSkyBlue">El login del usuario es obligatorio para acceder a los contenidos </p>
-                <a  class="btn btn-outline-light btn-lg px-4" href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.svg' %}" alt=""></a> 
+                <a  class="btn btn-outline-light btn-lg px-3" style="background-color: blue" href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.svg' %}" alt=""></a> 
             {% endif %}
         </nav>
         <!-- Header-->

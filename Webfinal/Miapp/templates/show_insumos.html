@@ -43,10 +43,12 @@
 
 
   {% if  perms.Miapp.add_insumos %}  
+  <div>
 <a class="btn btn-secondary btn-lg " href="{% url 'Insumos'%}">Agregar</a>
 {% endif %}
 {% if  perms.Miapp.change_insumos %}  
 <a class="btn btn-secondary btn-lg " href="{% url 'show_ins_edit'%}">Editar</a>
 {% endif %}
+</div>
 
 {% endblock %}
