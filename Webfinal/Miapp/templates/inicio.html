@@ -22,7 +22,7 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             {% if  perms.Miapp.delete_celulares %}   
-                <a class="btn btn-outline-light btn-lg px-4" href="{%url 'Registro'%}"> <img class="icon input-icon" src="{% static 'assets/registro.svg' %}" alt="">Registro</a>
+                <a class="btn btn-outline-light btn-lg px-4" style="margin-left: 40px" href="{%url 'Registro'%}"> <img class="icon input-icon" src="{% static 'assets/registro.svg' %}" alt="">Registro</a>
             {% endif %}    
             
             {% if user.is_authenticated %}                             
@@ -30,11 +30,9 @@
                 
                     <h4 style="color:white;text-align: center">Usuario conectado: {{user.username}} - {{user.groups.all.0}}  <img class="icon input-icon" src="{% static 'assets/usuario_conectado.png' %}" alt=""></h4>
                     <div>
-                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
+                    <a class="btn btn-outline-light btn-lg px-4" style="margin-right: 40px"  href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
 
-            {% endif %}
-                
-                <a style="center"  class="btn btn-outline-light btn-lg px-3"  href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.png' %}" alt=""></a> 
+          
             {% endif %}
         </nav>
         <!-- Header-->
@@ -57,7 +55,12 @@
                             <div style="width:120px; height:140px; margin: 0 auto;">
                             <a href="https://hotelmix.es/time/parana-30036">Paraná</a><br/></div></div> <script type="text/javascript"> function setWidgetData_1704680239(data){ if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = ''; var params = data.results[i]; objMainBlock = document.getElementById('tw_'+params.widget_type+'_'+params.widget_id); if(objMainBlock !== null) objMainBlock.innerHTML = params.html_code; } } } var clock_timer_1704680239 = -1; widgetSrc = "https://widgets.booked.net/time/info?ver=2;domid=582;type=19;id=1704680239;scode=24454;city_id=30036;wlangid=4;mode=2;details=0;background=ffffff;border_color=ffffff;color=f2edf2;add_background=ffffff;add_color=333333;head_color=ffffff;border=0;transparent=0"; var widgetUrl = location.href; widgetSrc += '&ref=' + widgetUrl; var wstrackId = ""; if (wstrackId) { widgetSrc += ';wstrackId=' + wstrackId + ';' } var timeBookedScript = document.createElement("script"); timeBookedScript.setAttribute("type", "text/javascript"); timeBookedScript.src = widgetSrc; document.body.appendChild(timeBookedScript); </script>
                             <!-- clock widget end -->
-    
+                            {% if user.is_anonymous %}
+                                     
+                               
+                                    
+                            <a  class="btn btn-outline-light btn-lg px-3"  href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.png' %}" alt=""></a> 
+                            {% endif %}
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 {% if  perms.Miapp.view_celulares %} 
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'show_cel'%}">Celulares</a>
@@ -102,14 +105,16 @@
                                 <div>
                               <p></p>
                                 </div>
-
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                {% if  perms.Miapp.delete_celulares %}  
                                 
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Usuarios'%}">Gestion de Usuarios</a>         
+                              
+                            
+                                {% if  perms.Miapp.delete_celulares %}  
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{%url 'Usuarios'%}">Gestion de Usuarios</a> 
+                            </div>       
                                 {%endif%}
                                 
-                            </div>        
+                                 
                         </div>
                     </div>
                 </div>
