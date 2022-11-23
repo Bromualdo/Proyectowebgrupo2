@@ -30,21 +30,11 @@
                 
                     <h4 style="color:white;text-align: center">Usuario conectado: {{user.username}} - {{user.groups.all.0}}  <img class="icon input-icon" src="{% static 'assets/usuario_conectado.png' %}" alt=""></h4>
                     <div>
-<<<<<<< HEAD
-                    <a class="btn btn-outline-light btn-lg px-4" style="margin-right: 50px"   href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
-
-                {% else %}
-                <div class="center">
-                <p style="color: LightSkyBlue;">El login del usuario es obligatorio para acceder a los contenidos </p>
-            </div>
-                <a  class="btn btn-outline-light btn-lg px-3" style="background-color: blue" href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.svg' %}" alt=""></a> 
-=======
                     <a class="btn btn-outline-light btn-lg px-4" href="{% url 'Logout' %}">Logout <img class="icon input-icon" src="{% static 'assets/logout.svg' %}" alt=""> </a>
 
             {% endif %}
                 
                 <a style="center"  class="btn btn-outline-light btn-lg px-3"  href="{% url 'Login' %}"> Login de usuario <img class="icon input-icon" src="{% static 'assets/login.png' %}" alt=""></a> 
->>>>>>> b1e5e67b310128a06e88168cedd3640edfedfd46
             {% endif %}
         </nav>
         <!-- Header-->
