@@ -5,7 +5,7 @@ from .views import agregado, celulares, hardware, inicio, insumos, show_celulare
 
 
 urlpatterns = [
-    path("", inicio,name='Inicio'),
+    path("", inicio, name='Inicio'),
     path ("lista_hardware/", hardware,name='Hardware'),
     path ("lista_insumos/", insumos,name='Insumos'),
     path ("lista_software/", software,name='Software'),
